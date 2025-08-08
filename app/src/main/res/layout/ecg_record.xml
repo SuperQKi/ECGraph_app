@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4C9A84"
-    tools:context=".MainActivity">
+    tools:context=".RecordActivity">
 
     <!-- Tiêu đề -->
     <TextView
@@ -18,7 +18,7 @@
         android:text="ECG Recorder"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#FAFAFA"
+        android:textColor="#F5F9FF"
         android:fontFamily="@font/bungee_regular"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,11 +95,11 @@
     </LinearLayout>
 
     <!-- display BPM and status of data processing-->
-
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/ecgChart"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/ecg_grid_background"
         app:layout_constraintBottom_toTopOf="@id/textStatusPanel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -124,8 +124,8 @@
             android:layout_weight="1"
             android:fontFamily="@font/signika_light"
             android:gravity="center"
-            android:text="0 BPM\nHeart rate"
-            android:textColor="#ffffff"
+            android:text="0 BPM\n❤️Heart rate"
+            android:textColor="#F5F9FF"
             android:textSize="20dp" />
 
         <TextView
@@ -136,7 +136,7 @@
             android:fontFamily="@font/signika_light"
             android:gravity="center"
             android:text="--%\nProcessing"
-            android:textColor="#ffffff"
+            android:textColor="#F5F9FF"
             android:textSize="20dp" />
     </LinearLayout>
 
@@ -158,8 +158,8 @@
             android:layout_height="wrap_content"
             android:text="Start"
             android:fontFamily="@font/signika_medium"
-            android:backgroundTint="#D31A6DAB"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="#D3EAF2"
+            android:textColor="#2D3047"
             android:layout_marginEnd="20dp" />
 
         <Button
@@ -168,8 +168,8 @@
             android:layout_height="wrap_content"
             android:text="Stop"
             android:fontFamily="@font/signika_medium"
-            android:backgroundTint="#E6B3221C"
-            android:textColor="#FFFFFF" />
+            android:backgroundTint="#FFE4E1"
+            android:textColor="#2D3047" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

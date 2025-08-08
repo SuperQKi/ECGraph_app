@@ -4,7 +4,7 @@
     <!-- Nền xanh -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#4C9A84"/> <!-- màu nền ECG -->
+            <solid android:color="@android:color/transparent"/> <!-- màu nền ECG -->
         </shape>
     </item>
 
@@ -12,7 +12,6 @@
     <item>
         <bitmap
             android:src="@drawable/grid_lines"
-            android:tileMode="repeat"
-            tools:ignore="ResourceCycle" />
+            android:tileMode="repeat" />
     </item>
 </layer-list>

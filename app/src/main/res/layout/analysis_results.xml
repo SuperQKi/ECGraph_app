@@ -7,169 +7,201 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4C9A84"
-    tools:context=".MainActivity">
+    tools:context=".AnalysisActivity">
 
-    <!-- Tiêu đề -->
+    <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="ECG Recorder"
+        android:text="ECG Analysis"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#FAFAFA"
+        android:textColor="#F5F9FF"
         android:fontFamily="@font/bungee_regular"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        tools:ignore="HardcodedText" />
 
-    <!-- Trạng thái kết nối -->
-    <!-- Thanh trạng thái -->
-
-    <TextView
-        android:id="@+id/tvConnectionStatus"
-        android:layout_width="wrap_content"
+    <!-- Scrollable content -->
+    <ScrollView
+        android:id="@+id/resultView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/signika_medium"
-        android:text="Connected to device"
-        android:textColor="#F8FAF8"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@id/summaryInfo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
-        android:id="@+id/statusPanel"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/ecgChart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvConnectionStatus"
-        app:layout_constraintVertical_bias="1.0">
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:layout_gravity="center">
-
-            <!-- Vòng tròn -->
-            <View
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center"
-                android:background="@drawable/circle_border" />
-
-            <!-- Trái tim -->
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:src="@drawable/heart" />
-
-            <!-- Số ở giữa -->
-            <TextView
+            <!-- Lead I -->
+            <TextView android:text="Lead I" android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/signika_light"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#ffffff"
-                android:textSize="35sp"
-                android:textStyle="bold" />
-        </FrameLayout>
+                tools:ignore="HardcodedText"/>
+            <com.github.mikephil.charting.charts.LineChart
+                android:background="@drawable/ecg_bgr_16px"
+                android:id="@+id/chartLead1"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginBottom="8dp" />
 
-        <!-- Biểu đồ ECG -->
-        <!-- Thanh dưới cùng -->
-    </LinearLayout>
+            <!-- Lead II -->
+            <TextView android:text="Lead II" android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText"/>
+            <com.github.mikephil.charting.charts.LineChart
+                android:background="@drawable/ecg_bgr_16px"
+                android:id="@+id/chartLead2"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginBottom="8dp" />
 
-    <!-- display BPM and status of data processing-->
+            <!-- Lead III -->
+            <TextView android:text="Lead III" android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText"/>
+            <com.github.mikephil.charting.charts.LineChart
+                android:background="@drawable/ecg_bgr_16px"
+                android:id="@+id/chartLead3"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginBottom="8dp" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/ecgChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/textStatusPanel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statusPanel"
-        app:layout_constraintVertical_bias="1.0" />
+            <!-- Time & HR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
+                android:weightSum="2">
 
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="⏱ Time: 00:00"
+                    android:textSize="16sp"
+                    android:textColor="#F5F9FF"
+                    android:gravity="center"
+                    android:fontFamily="@font/signika_semibold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvHR"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="❤️ Avg HR: 76 BPM"
+                    android:textSize="16sp"
+                    android:textColor="#F5F9FF"
+                    android:fontFamily="@font/signika_semibold"
+                    android:gravity="center"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Summary Info -->
     <LinearLayout
-        android:id="@+id/textStatusPanel"
+        android:id="@+id/summaryInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#4C9A84"
-        app:layout_constraintBottom_toTopOf="@+id/bottomPanel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        android:orientation="vertical"
+        android:fontFamily="@font/bungee_regular"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/resultView"
+        app:layout_constraintBottom_toTopOf="@id/ButtonPanel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:id="@+id/textBPM"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/signika_light"
             android:gravity="center"
-            android:text="0 BPM\nHeart rate"
-            android:textColor="#ffffff"
-            android:textSize="20dp" />
-
+            android:padding="8dp"
+            android:text="Analysis Summary"
+            android:textColor="#F5F9FF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,SpUsage,TextSizeCheck" />
         <TextView
-            android:id="@+id/textProcessing"
-            android:layout_width="100dp"
+            android:id="@+id/RthythmText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/signika_light"
-            android:gravity="center"
-            android:text="--%\nProcessing"
-            android:textColor="#ffffff"
-            android:textSize="20dp" />
+            android:text="• Rhythm: "
+            android:textSize="14sp"
+            android:textColor="#2D3047"
+            android:padding="5dp"
+            android:background="#DDDDDD"
+            tools:ignore="HardcodedText,SmallSp" />
+        <TextView
+            android:id="@+id/SignalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Signal quality:"
+            android:textColor="#2D3047"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:background="#DDDDDD"
+            tools:ignore="HardcodedText,SmallSp"/>
+        <TextView
+            android:id="@+id/Notes"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:text="• Notes:"
+            android:textColor="#2D3047"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:background="#DDDDDD"
+            tools:ignore="HardcodedText,SmallSp"/>
     </LinearLayout>
 
+    <!-- Button Panel -->
     <LinearLayout
-        android:id="@+id/bottomPanel"
+        android:id="@+id/ButtonPanel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:padding="16dp"
-        android:background="@drawable/rounded_top_background"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/summaryInfo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <Button
-            android:id="@+id/btnStart"
+            android:id="@+id/btnUpload"
+            android:text="⬆ Upload to Drive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start"
             android:fontFamily="@font/signika_medium"
-            android:backgroundTint="#D31A6DAB"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="#D3EAF2"
+            android:textColor="#2D3047"
             android:layout_marginEnd="20dp" />
 
         <Button
-            android:id="@+id/btnStop"
+            android:id="@+id/btnNewRecord"
+            android:text="🔁 New Recording"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stop"
             android:fontFamily="@font/signika_medium"
-            android:backgroundTint="#E6B3221C"
-            android:textColor="#FFFFFF" />
+            android:backgroundTint="#FFE4E1"
+            android:textColor="#2D3047" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

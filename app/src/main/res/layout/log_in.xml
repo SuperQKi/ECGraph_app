@@ -1,6 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F3F6F9"
+    tools:context=".LoginActivity">
+
+    <!-- Avatar / Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/heart"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chào mừng trở lại 👋"
+        android:textColor="#2D3047"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        tools:ignore="HardcodedText"/>
+
+    <!-- Email input -->
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edittext_bg"
+        android:padding="16dp"
+        android:textColorHint="#888"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
+
+    <!-- Password input -->
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Mật khẩu"
+        android:inputType="textPassword"
+        android:background="@drawable/edittext_bg"
+        android:padding="16dp"
+        android:textColorHint="#888"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/edtEmail"
+        app:layout_constraintStart_toStartOf="@id/edtEmail"
+        app:layout_constraintEnd_toEndOf="@id/edtEmail"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Forgot password -->
+    <TextView
+        android:id="@+id/tvForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quên mật khẩu?"
+        android:textColor="#1A73E8"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/edtPassword"
+        app:layout_constraintEnd_toEndOf="@id/edtPassword"
+        android:layout_marginTop="8dp"
+        tools:ignore="HardcodedText"/>
+
+    <!-- Login button -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Đăng nhập"
+        android:textStyle="bold"
+        android:backgroundTint="#1A73E8"
+        android:textColor="#FFF"
+        app:layout_constraintTop_toBottomOf="@id/tvForgotPassword"
+        app:layout_constraintStart_toStartOf="@id/edtPassword"
+        app:layout_constraintEnd_toEndOf="@id/edtPassword"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Register text -->
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chưa có tài khoản? Đăng ký"
+        android:textColor="#2D3047"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="@id/btnLogin"
+        app:layout_constraintEnd_toEndOf="@id/btnLogin"
+        android:layout_marginTop="24dp"
+        tools:ignore="HardcodedText"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
